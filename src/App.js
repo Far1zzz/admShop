@@ -37,10 +37,38 @@ export default function router() {
             </Private>
           }
         />
-        <Route path="/info" element={<InfoData />} />
-        <Route path="/inputData" element={<FormData />} />
-        <Route path="/edit/:idToko" element={<FormData />} />
-        <Route path="/contact" element={<Contact />} />
+        <Route
+          path="/info"
+          element={
+            <Private>
+              <InfoData />
+            </Private>
+          }
+        />
+        <Route
+          path="/inputData"
+          element={
+            <Private>
+              <FormData />
+            </Private>
+          }
+        />
+        <Route
+          path="/edit/:idToko"
+          element={
+            <Private>
+              <FormData />
+            </Private>
+          }
+        />
+        <Route
+          path="/contact"
+          element={
+            <Private>
+              <Contact />
+            </Private>
+          }
+        />
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />

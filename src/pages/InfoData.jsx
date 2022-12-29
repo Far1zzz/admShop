@@ -9,7 +9,7 @@ const InfoData = () => {
   const [dataSource, setDataSource] = useState([]);
   const [fetch, setFetch] = useState(true);
   const [loading, setLoading] = useState(false);
-  const [currentId, setCurrentId] = useState(-1);
+  const [, setCurrentId] = useState(-1);
 
   useEffect(() => {
     setLoading(true);
@@ -142,7 +142,7 @@ const InfoData = () => {
     <>
       <div className="m-5">
         <Table
-          scroll={{ x: 900, y: 900 }}
+          scroll={{ x: 900, y: 350 }}
           columns={columns}
           dataSource={dataSource}
           pagination={false}
