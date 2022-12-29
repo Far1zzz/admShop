@@ -142,7 +142,7 @@ const InfoData = () => {
     <>
       <div className="m-5">
         <Table
-          scroll={{ x: 900, y: 350 }}
+          scroll={{ x: 900, y: 390 }}
           columns={columns}
           dataSource={dataSource}
           pagination={false}
