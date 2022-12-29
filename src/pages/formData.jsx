@@ -134,7 +134,7 @@ const FormData = () => {
           });
         });
     }
-  }, []);
+  }, [idToko]);
 
   return (
     <>
