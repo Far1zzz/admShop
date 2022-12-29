@@ -140,6 +140,9 @@ const InfoData = () => {
 
   return (
     <>
+      <div className="text-center text-3xl font-bold">
+        <h1>PAGE TABLE</h1>
+      </div>
       <div className="m-5">
         <Table
           scroll={{ x: 900, y: 390 }}
