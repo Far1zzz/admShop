@@ -121,7 +121,7 @@ const FormData = () => {
         })
         .then((res) => {
           console.log(res);
-          const data = res.data.dataToko.data;
+          const data = res.data.shopData.data;
 
           setInput({
             category: data.category,

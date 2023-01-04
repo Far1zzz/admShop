@@ -11,6 +11,13 @@ const InfoData = () => {
   const [loading, setLoading] = useState(false);
   const [, setCurrentId] = useState(-1);
 
+  const rupiah = (number) => {
+    return new Intl.NumberFormat("id-ID", {
+      style: "currency",
+      currency: "IDR",
+    }).format(number);
+  };
+
   useEffect(() => {
     setLoading(true);
     const token = localStorage.getItem("token");
@@ -22,8 +29,8 @@ const InfoData = () => {
           },
         })
         .then((res) => {
-          setDataSource(res.data.dataToko.data);
-          console.log(res.data.dataToko.data);
+          setDataSource(res.data.shopData.data);
+          console.log(res.data.shopData.data);
           setLoading(false);
         })
         .catch((err) => {
@@ -69,7 +76,14 @@ const InfoData = () => {
       title: "Harga",
       width: 100,
       align: "center",
-      dataIndex: "hargaProduk",
+      render: (item, index) => {
+        return (
+          <>
+            {" "}
+            <p>{rupiah(item.hargaProduk)}</p>
+          </>
+        );
+      },
     },
     {
       key: "6",
@@ -145,7 +159,7 @@ const InfoData = () => {
       </div>
       <div className="m-5">
         <Table
-          scroll={{ x: 900, y: 390 }}
+          scroll={{ x: 900, y: 400 }}
           columns={columns}
           dataSource={dataSource}
           pagination={false}

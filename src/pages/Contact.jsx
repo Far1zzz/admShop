@@ -1,6 +1,50 @@
-import React from "react";
+import axios from "axios";
+import React, { useState } from "react";
 
 const Contact = () => {
+  const [input, setInput] = useState({
+    name: "",
+    email: "",
+    pesan: "",
+  });
+
+  const handleInput = (e) => {
+    const data = e.target.name;
+    const value = e.target.value;
+
+    if (data === "name") {
+      setInput({ ...input, name: value });
+    } else if (data === "email") {
+      setInput({ ...input, email: value });
+    } else if (data === "pesan") {
+      setInput({ ...input, pesan: value });
+    }
+  };
+
+  const handlePost = (e) => {
+    e.preventDefault();
+    let { name, email, pesan } = input;
+
+    axios
+      .post(`${process.env.REACT_APP_API_ADMIN}/contact`, {
+        name,
+        email,
+        pesan,
+      })
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+
+    setInput({
+      name: "",
+      email: "",
+      pesan: "",
+    });
+  };
+
   return (
     <>
       {/* Container for demo purpose */}
@@ -81,10 +125,13 @@ const Contact = () => {
                 </div>
               </div>
               <div className="max-w-[700px] mx-auto">
-                <form>
+                <form onSubmit={handlePost}>
                   <div className="form-group mb-6">
                     <input
                       type="text"
+                      name="name"
+                      onChange={handleInput}
+                      value={input.name}
                       className="form-control block
         w-full
         px-3
@@ -105,6 +152,9 @@ const Contact = () => {
                   </div>
                   <div className="form-group mb-6">
                     <input
+                      onChange={handleInput}
+                      value={input.email}
+                      name="email"
                       type="email"
                       className="form-control block
         w-full
@@ -145,6 +195,9 @@ const Contact = () => {
       "
                       id="exampleFormControlTextarea13"
                       rows={3}
+                      onChange={handleInput}
+                      value={input.pesan}
+                      name="pesan"
                       placeholder="Message"
                       defaultValue={""}
                     />
