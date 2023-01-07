@@ -11,7 +11,7 @@ import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 import InfoData from "./pages/InfoData";
 import FormData from "./pages/formData";
-
+import InactiveTimeout from "./components/InactiveTimeOut";
 // logic private route agar hanya bisa masuk ketika token terdeteksi di localStorage
 function Private({ children }) {
   // ambil data token di localStorage
@@ -26,6 +26,7 @@ export default function router() {
   return (
     <BrowserRouter>
       <Navbar />
+      <InactiveTimeout />
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
